@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
     float x;
     float A[254];
     FILE *fin;
-    fin=fopen("A.txt","r");
+    fin=fopen(argv[1],"r");
     int i=0;
     while(fscanf(fin,"%f", &x)==1)
     {
@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
     float x2;
     float A2[254];
     FILE *sas;
-    sas=fopen("x.txt","r");
+    sas=fopen(argv[2],"r");
     int i2=0;
     while(fscanf(sas,"%f", &x2)==1)
     {
