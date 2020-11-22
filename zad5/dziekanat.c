@@ -1,14 +1,5 @@
-/**
-Mamy mini bazę studentów (tabelę z studentami, przedmiotami i ocenami)
-Cel: obliczyć ranking.
-*/
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-
-
+#include "dziekanat.h"
 int znajdz(char *szukany_nr, char nr_albumow[100][10], int n) {
     int i;
     for (i=0; i<n; i++) {
@@ -37,7 +28,7 @@ void najlepszy_przedmiot(student dane[100], int ile_rekordow) {
     int ile_studentow;
     float sumy_ocen[100]={0};
     int sumy_ects[100]={0};
-    float srednie[100]={0};
+    //float srednie[100]={0};
     int i;
     int pozycja;
     int najlepsza_pozycja;
@@ -66,7 +57,6 @@ void najlepszy_przedmiot(student dane[100], int ile_rekordow) {
     }
 
     char nazwanajlepszegoprzedmiotu[254];
-    int liczbapomocnicza=0;
     for(int i=0;i<ile_rekordow;i++)
     {
         if(strcmp(nr_albumow[najlepsza_pozycja],dane[i].kod_przed)==0)
@@ -106,14 +96,55 @@ void najlepszy_przedmiot(student dane[100], int ile_rekordow) {
 
 }
 
-int main(int argc, char ** argv) {
-    student dane[100];
-    int ile;
-    // dane == &dane[0]
-    ile = wczytaj(dane, argv[1]);
-    //wypisz(dane, ile);
+int znajdz_studentow(char nr_albumow[100][10], student dane[100], int n) {
+    int ile_znalazlem = 0;
+    int i;
 
-    najlepszy_przedmiot(dane, ile);
+    for (i=0; i <n; i++) {
+        if (znajdz(dane[i].nr_albumu, nr_albumow, ile_znalazlem ) == -1) {
+            strncpy(nr_albumow[ile_znalazlem], dane[i].nr_albumu, 9);
+            ile_znalazlem++;
+        }
+    }
+    return ile_znalazlem;
+}
 
-    return 0;
+
+void najlepszy_student(student dane[100], int ile_rekordow) {
+    char nr_albumow[100][10];
+    int ile_studentow;
+    float sumy_wazonych_ocen[100];
+    int sumy_ects[100];
+    //float srednie[100];
+    int i;
+    int pozycja;
+    int najlepsza_pozycja;
+    float najlepsza = 0.0f;
+
+    ile_studentow = znajdz_studentow(nr_albumow, dane, ile_rekordow);
+
+    for (i=0; i < ile_rekordow; i++) {
+        pozycja = znajdz( dane[i].nr_albumu, nr_albumow, ile_studentow );
+        // if (pozycje >= 0)
+        sumy_wazonych_ocen[pozycja] += dane[i].ocena * dane[i].ects;
+        sumy_ects[pozycja] += dane[i].ects;
+    }    
+
+    /*for (i=0;i<ile_studentow; i++) 
+        printf("Student [%d]: %s - %f:%d - %f \n", i+1, nr_albumow[i], 
+        sumy_wazonych_ocen[i], sumy_ects[i], sumy_wazonych_ocen[i] / sumy_ects[i]); */
+
+    for (i=0; i < ile_studentow; i++) {
+        if (najlepsza < sumy_wazonych_ocen[i] / sumy_ects[i]) {
+            najlepsza = sumy_wazonych_ocen[i] / sumy_ects[i];
+            najlepsza_pozycja = i;
+        }
+    }
+
+    printf("Najlepszy student: \n");
+    printf("Student [%d] - %s %s: %s - %f \n", 
+        najlepsza_pozycja+1,dane[najlepsza_pozycja].imie,dane[najlepsza_pozycja].nazwisko, nr_albumow[najlepsza_pozycja],
+        sumy_wazonych_ocen[najlepsza_pozycja] / sumy_ects[najlepsza_pozycja]
+    );
+
 }

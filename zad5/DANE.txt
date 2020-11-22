@@ -1,0 +1,12 @@
+11
+Jan|Kowalski|123456|1DE1203|Matematyka|5.0|3
+Grzegorz|Włodek|222222|1DE1203|Matematyka|5.0|3
+Jan|Kowalski|123456|1DE1101|Fizyka|3.5|4
+Irena|Janowska|444444|1DE1101|Fizyka|4.0|4
+Jan|Kowalski|123456|1DE1103|Podstawy programowania|3.5|3
+Irena|Janowska|444444|1DE1203|Matematyka|3.0|3
+Jan|Kowalski|123456|1DE1109|Mechanika|5.0|4
+Irena|Janowska|444444|1DJ1101|Język obcy|2.0|2
+Jan|Kowalski|123456|1DJ1101|Język obcy|3.0|2
+il|Mango|69420|1DMSci01|Granie w Minecrafta|2|4
+Tomasz|Karolak|910034|3DT8891|Granie w filmach|5|6
