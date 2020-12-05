@@ -1,0 +1,6 @@
+./mydb baza.csv add_student IMIE NAZWISKO NR.ALBUMU EMAIL out.csv
+./mydb baza.csv add_course KOD NAZWA SEMESTR out.csv
+./mydb baza.csv add_student_to_course KOD.PRZED NR.ALBUMU OCENA KOMENTARZ out.csv
+
+baza.csv - przykładowy plik początkowy
+out.csv - nazwa pliku końcowego gdzie program zapisze zmiany
