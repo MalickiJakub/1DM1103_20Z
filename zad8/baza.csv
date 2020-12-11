@@ -1,0 +1,20 @@
+6
+Robert;AKowalski;123456;ala@ala.pl
+Jan;CNowak;000007;brak@brak.pl
+Grzegorz;BSchetyński;00000001;nie@nie.pl
+Robert;GKowalski;123456;ala@ala.pl
+Jan;AANowak;000007;brak@brak.pl
+Grzegorz;AZSchetyński;0005401;nie@nie.pl
+4
+AAAA1DE2103;Numerical methods;2020Z
+1DE219O;Algorithms and python;2020Z
+1DE2103;AANumerical methods;2020Z
+1DA1245;ZAlgorithms and python;2020Z
+7
+1DE2103;000007;0; 
+1DA1245;000007;2.0;Beznadziejny projekt!
+1DE2103;123456;0; 
+1DA1245;00000001;3.0;Super!
+1DE2103;123456;4;Test
+1DE219O;123456;4;mINECRAFT
+AAAA1DE2103;0005401;3;komornik
